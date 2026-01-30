@@ -1,0 +1,21 @@
+﻿Hola. Tu página PatentesJustas.ar tiene un nivel de rigor técnico y legal muy sólido. Se nota que has hecho la tarea de diferenciar la normativa registral (federal) de la realidad fiscal (provincial), que es donde la mayoría de los medios confunden a la gente.
+Aquí tienes mi análisis de "due diligence" sobre la información, confirmando aciertos y marcando un par de puntos que valdría la pena re-verificar para evitar errores, especialmente con los valores de 2026.
+✅ Lo que es 100% Factual y Sólido
+* El marco regulatorio es correcto: Citas con precisión la Resolución M.J. 272/2024 (Legajo Digital, libre elección) y la Disposición 142/2024 (fin de la retención obligatoria de impuestos en Registros). Es fundamental la distinción que haces: los registros ya no actúan como agentes de retención compulsivos a menos que el usuario lo pida.
+* El riesgo legal está muy bien explicado: Tu interpretación del fallo Baker Hughes c/ GCBA es jurídicamente impecable. Muchos "gestores" venden la idea de que radicar el auto en otra provincia es un trámite mágico; tu aclaración sobre el requisito de la guarda habitual y el riesgo de que AGIP/ARBA reclamen por "simulación" es la advertencia más valiosa de la página.
+* Conflictos Provinciales: La mención de la Circular 19/2025 (deshabilitación de ventanillas virtuales) y la tensión con los códigos fiscales locales (ej. Art. 418 Código Fiscal CABA) refleja correctamente la batalla actual entre Nación y Provincias por la caja.
+⚠️ Puntos a Verificar (Red Flags)
+He detectado dos discrepancias que deberías revisar antes de publicar la versión final de Enero 2026:
+1. La alícuota de San Juan (0,5% vs Realidad)
+Mencionas que San Juan cobra un 0,5% anual ($121.500 para un auto de $24.3M).
+* El dato: Fuentes recientes de 2025 indican que, si bien San Juan es barata, la patente para un auto promedio (ej. Cronos/208) rondaba los $480.000+ anuales, lo que sugiere una alícuota efectiva más cercana al 2% que al 0,5%.
+* Recomendación: Verificá la Ley Impositiva Anual 2026 de San Juan. Es posible que el 0,5% aplique solo a vehículos comerciales, eléctricos, o sea una tasa antigua. Si prometes un ahorro de 10x y el real es de 3x, podrías perder credibilidad.
+2. Alcance "Libre Elección" (¿Solo 0km?)
+Tu texto dice: "Desde 2024, podés elegir dónde inscribís tu vehículo" (general).
+* El detalle: La Circular DN 20/2024 instrumentó operativamente la libre elección para Inscripciones Iniciales (0km).
+* La duda: Asegúrate de si el sistema SURA ya permite la libre elección en Transferencias de Usados sin restricciones. La normativa (Res 272/24) es amplia, pero la implementación operativa suele ir por etapas. Si un usuario va con un usado y el sistema no le deja elegir registro sin cambio de domicilio, se frustrará. Vale la pena una nota al pie sobre esto.
+💡 Sugerencia de Valor Agregado
+Dado que mencionas la doble imposición con Bienes Personales, podrías agregar un dato "de color" financiero que a tu público le interesará:
+* El auto paga patente (flujo anual) + Bienes Personales (stock anual).
+* Pero además, el costo de oportunidad del dinero inmovilizado en impuestos adelantados (si se paga anual) vs. la inflación/tasa de interés. En un contexto de carry trade o tasas positivas, pagar anual sin un descuento agresivo (mínimo 30-40%) suele ser mal negocio financiero.
+En resumen: La página es excelente y necesaria. Solo ajustaría el número fino de la alícuota de San Juan para blindarla contra críticas.
