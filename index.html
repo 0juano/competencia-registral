@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)">
 <title>PatentesJustas.ar — Elegí dónde radicás tu auto y pagá menos</title>
-<meta name="description" content="Guía completa sobre el impuesto a las patentes automotor en Argentina. Compará tasas entre provincias, conocé tus derechos y optimizá lo que pagás legalmente.">
+<meta name="description" content="Guía completa sobre el impuesto a las patentes automotor en Argentina 2026. Compará tasas entre provincias, conocé tus derechos y optimizá lo que pagás legalmente.">
 <style>
 :root {
   --bg: #fafaf9;
@@ -25,6 +27,7 @@
   --blue: #2563eb;
 }
 [data-theme="dark"] {
+  color-scheme: dark;
   --bg: #0c0a09;
   --bg2: #1c1917;
   --bg3: #292524;
@@ -43,13 +46,20 @@
   --blue: #60a5fa;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; color-scheme: light dark; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+[id] { scroll-margin-top: 72px; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
 .wide { max-width: 1080px; }
@@ -102,6 +112,7 @@ nav .links a:hover { color: var(--text); }
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 900; line-height: 1.1;
   letter-spacing: -1.5px; margin-bottom: 20px;
+  text-wrap: balance;
   background: linear-gradient(135deg, var(--accent), var(--red));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -122,7 +133,7 @@ nav .links a:hover { color: var(--text); }
   flex-wrap: wrap;
 }
 .hero .stat { text-align: center; }
-.hero .stat .num { font-size: 2rem; font-weight: 900; color: var(--accent); }
+.hero .stat .num { font-size: 2rem; font-weight: 900; color: var(--accent); font-variant-numeric: tabular-nums; }
 .hero .stat .label { font-size: 0.82rem; color: var(--text3); margin-top: 4px; }
 
 /* SECTIONS */
@@ -134,7 +145,7 @@ section:last-child { border-bottom: none; }
 }
 h2 {
   font-size: 2rem; font-weight: 800; letter-spacing: -0.8px;
-  line-height: 1.2; margin-bottom: 24px;
+  line-height: 1.2; margin-bottom: 24px; text-wrap: balance;
 }
 h3 {
   font-size: 1.35rem; font-weight: 700; margin: 32px 0 12px;
@@ -163,8 +174,11 @@ blockquote {
 }
 .callout.red { background: #fef2f2; border-color: var(--red); }
 [data-theme="dark"] .callout.red { background: #1a0505; }
+.callout.blue { background: #eff6ff; border-color: var(--blue); }
+[data-theme="dark"] .callout.blue { background: #0a1628; }
 .callout h4 { font-size: 1rem; margin-bottom: 8px; color: var(--text); }
 .callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout p + p { margin-top: 12px; }
 
 /* CHART */
 .chart-container { margin: 32px 0; }
@@ -180,14 +194,14 @@ blockquote {
   display: flex; align-items: center; padding-left: 10px;
   font-size: 0.75rem; font-weight: 700; color: #fff; min-width: 20px;
 }
-.bar-value { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+.bar-value { font-size: 0.9rem; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
 
 /* TABLE */
 .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 12px; border: 1px solid var(--border); }
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 thead { background: var(--bg2); }
 th { padding: 12px 16px; text-align: left; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text3); }
-td { padding: 12px 16px; border-top: 1px solid var(--border); }
+td { padding: 12px 16px; border-top: 1px solid var(--border); font-variant-numeric: tabular-nums; }
 tr:hover td { background: var(--bg2); }
 .tag {
   display: inline-block; font-size: 0.72rem; font-weight: 700;
@@ -227,7 +241,9 @@ tr:hover td { background: var(--bg2); }
 .faq-q {
   padding: 18px 20px; cursor: pointer; font-weight: 700;
   display: flex; justify-content: space-between; align-items: center;
+  width: 100%; border: none; text-align: left; font-family: inherit;
   background: var(--card); font-size: 0.95rem; user-select: none;
+  color: var(--text);
 }
 .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--accent); font-weight: 300; transition: transform 0.3s; }
 .faq-item.open .faq-q::after { transform: rotate(45deg); }
@@ -267,7 +283,17 @@ footer a { color: var(--accent); text-decoration: none; }
 .intl-card .flag { font-size: 2rem; margin-bottom: 8px; }
 .intl-card h4 { font-size: 1rem; margin-bottom: 8px; }
 .intl-card p { font-size: 0.88rem; margin: 0; }
-.intl-card .rate { font-size: 1.4rem; font-weight: 900; color: var(--accent); margin: 8px 0; }
+.intl-card .rate { font-size: 1.4rem; font-weight: 900; color: var(--accent); margin: 8px 0; font-variant-numeric: tabular-nums; }
+
+/* EXPERT QUOTES */
+.expert-grid { display: grid; gap: 16px; margin: 24px 0; }
+.expert-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px; box-shadow: var(--shadow);
+}
+.expert-card .name { font-weight: 700; font-size: 0.9rem; color: var(--accent); margin-bottom: 4px; }
+.expert-card .role { font-size: 0.8rem; color: var(--text3); margin-bottom: 12px; }
+.expert-card .quote { font-style: italic; font-size: 0.92rem; color: var(--text2); line-height: 1.6; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -289,6 +315,7 @@ footer a { color: var(--accent); text-decoration: none; }
 </style>
 </head>
 <body>
+<a href="#historia" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999">Saltar al contenido</a>
 
 <!-- NAV -->
 <nav>
@@ -298,12 +325,13 @@ footer a { color: var(--accent); text-decoration: none; }
       <a href="#historia">Historia</a>
       <a href="#comparativa">Comparativa</a>
       <a href="#internacional">Internacional</a>
-      <a href="#guia">Guía</a>
       <a href="#legal">Marco Legal</a>
+      <a href="#guia">Guía</a>
+      <a href="#expertos">Expertos</a>
       <a href="#faq">FAQ</a>
     </div>
     <div style="display:flex;gap:8px;align-items:center">
-      <button id="theme-toggle" title="Cambiar tema">🌙</button>
+      <button id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">🌙</button>
       <button class="menu-btn" id="menu-btn" aria-label="Menú">☰</button>
     </div>
   </div>
@@ -312,24 +340,24 @@ footer a { color: var(--accent); text-decoration: none; }
 <!-- HERO -->
 <header class="hero">
   <div class="container">
-    <div class="badge">DECRETO 272/2024 · LIBRE ELECCIÓN DE REGISTRO</div>
+    <div class="badge">RESOLUCIÓN M.J. 272/2024 · LIBRE ELECCIÓN DE REGISTRO</div>
     <h1>Tu auto, tu registro,<br>tu derecho a pagar menos.</h1>
     <p class="subtitle">
-      Las patentes automotor en Argentina son un impuesto patrimonial encubierto que varía hasta <strong>10x</strong> entre provincias.
-      Desde 2024, podés elegir dónde radicás tu vehículo. Esta guía te explica cómo.
+      Las patentes automotor en Argentina son un impuesto patrimonial que varía hasta <strong>8 veces</strong> entre jurisdicciones (San Juan 0,5% vs CABA 8%).
+      Desde 2024, podés elegir dónde inscribís tu vehículo. Esta guía te explica cómo — y los riesgos reales.
     </p>
     <a href="#guia" class="cta">Ver guía paso a paso →</a>
     <div class="stats">
       <div class="stat">
-        <div class="num">5%</div>
-        <div class="label">Alícuota máxima<br>en PBA (2025)</div>
+        <div class="num">8%</div>
+        <div class="label">Alícuota máxima<br>en CABA (2026)</div>
       </div>
       <div class="stat">
         <div class="num">0.5%</div>
-        <div class="label">Alícuota mínima<br>(Tierra del Fuego)</div>
+        <div class="label">Alícuota mínima<br>(San Juan)</div>
       </div>
       <div class="stat">
-        <div class="num">10x</div>
+        <div class="num">8x</div>
         <div class="label">Diferencia entre<br>la más cara y barata</div>
       </div>
     </div>
@@ -344,71 +372,65 @@ footer a { color: var(--accent); text-decoration: none; }
     <div class="article-meta">
       <span>PatentesJustas.ar</span>
       <div class="dot"></div>
-      <span>Enero 2025</span>
+      <span>Enero 2026</span>
       <div class="dot"></div>
-      <span>12 min de lectura</span>
+      <span>15 min de lectura</span>
     </div>
 
-    <h3>Orígenes: una tasa por el uso de la vía pública</h3>
+    <h3>1895: El primer auto y la primera patente</h3>
     <p>
-      El impuesto a las patentes automotor nació en Argentina a principios del siglo XX como una <strong>tasa retributiva</strong>: el propietario pagaba un monto fijo por el derecho a circular con su vehículo por las calles y rutas del municipio o provincia donde estaba registrado. El concepto era simple y razonable — mantener caminos cuesta dinero, y quienes los usan contribuyen a su mantenimiento.
+      El impuesto a las patentes nació en Argentina en <strong>1895</strong> como una tasa municipal, coincidiendo con la llegada del primer automóvil al país — un Benz importado por <strong>Dalmiro Varela Castex</strong>. El concepto era simple: el propietario pagaba un monto fijo por el derecho a circular por las calles del municipio. Poseer un automóvil era un privilegio de muy pocos, y la patente era casi simbólica.
     </p>
     <p>
-      En aquella época, poseer un automóvil era un privilegio de muy pocos. La patente era casi simbólica y su recaudación representaba una fracción menor de los presupuestos provinciales. El monto era fijo o variaba por categorías amplias (auto, camión, moto), sin relación directa con el valor del vehículo.
+      Durante décadas, la patente se cobró como <strong>montos fijos por categoría</strong> (auto, camión, moto) o por peso del vehículo, sin relación con su valor de mercado. Los importes eran modestos y representaban una fracción menor de los presupuestos locales.
     </p>
 
-    <h3>La mutación: de tasa a impuesto patrimonial</h3>
+    <h3>1958: Creación del DNRPA y la estructura federal</h3>
     <p>
-      A lo largo de las décadas, y especialmente desde los años 80 y 90, las provincias argentinas transformaron progresivamente la patente de una tasa fija a un <strong>impuesto ad valorem</strong> — es decir, calculado como un porcentaje del valor de mercado del vehículo. Esta mutación fue silenciosa pero radical.
+      El <strong>Decreto-Ley 6582/58</strong> creó la Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor (DNRPA), estableciendo un sistema nacional de registro. Sin embargo, la potestad tributaria sobre patentes permaneció en manos de las provincias y municipios, generando la fragmentación que persiste hasta hoy.
     </p>
     <p>
-      ¿Cuál fue la justificación? Nunca hubo una clara. La lógica tributaria dice que un impuesto sobre el valor de un bien es un <strong>impuesto patrimonial</strong>. Argentina ya tiene uno: el impuesto a los Bienes Personales, que grava el patrimonio total de las personas. Las patentes, entonces, se convirtieron en <strong>un segundo impuesto patrimonial, pero solo sobre un tipo de bien: los vehículos</strong>.
+      La <strong>Ley de Coparticipación Federal 23.548 (1988)</strong> consolidó la autoridad provincial sobre este tributo. Cada jurisdicción fija sus propias alícuotas y bases imponibles sin coordinación nacional.
+    </p>
+
+    <h3>Años 80-90: La mutación a impuesto patrimonial</h3>
+    <p>
+      Impulsadas por la inflación crónica que hacía obsoletos los montos fijos, las provincias fueron transitando hacia un sistema <strong>ad valorem</strong>: la patente pasó a calcularse como un porcentaje del valor de mercado del vehículo. Esta mutación fue silenciosa pero radical.
+    </p>
+    <p>
+      Jurídicamente, la patente se convirtió en un <strong>«impuesto real, patrimonial y directo»</strong> — no una tasa retributiva. No existe contraprestación estatal específica: no se paga por un servicio concreto, sino por el mero hecho de poseer un vehículo. Argentina ya tiene un impuesto patrimonial nacional (Bienes Personales), lo que genera <strong>doble imposición sobre el mismo bien</strong>.
+    </p>
+
+    <h3>La brecha que se profundiza</h3>
+    <p>
+      Después de la crisis de 2002, la disparidad entre jurisdicciones se amplió dramáticamente. Mientras <strong>Chaco cobraba 0,6%</strong>, la <strong>Provincia de Buenos Aires llegó a 4,7%</strong>. En 2024, CABA alcanzó alícuotas de hasta ~5%. Para 2026, CABA escaló hasta el <strong>8% para vehículos de alta gama</strong>.
     </p>
 
     <blockquote>
-      «Imaginemos que cada provincia cobrara un porcentaje anual sobre el valor de tu heladera, tu televisor o tu teléfono. Sería absurdo. Pero con los autos, lo aceptamos como normal.»
+      La Corte Suprema de Justicia de la Nación estableció el umbral de confiscatoriedad: un tributo que absorba más del 33% del ingreso presunto del bien es confiscatorio (fallos «Rosa Melo de Cané» 115:111 y «Candy S.A.» 332:1571).
     </blockquote>
 
-    <h3>El absurdo argentino</h3>
+    <h3>2024: El punto de inflexión</h3>
     <p>
-      Hoy, el dueño de un auto de $30.000.000 en la Provincia de Buenos Aires puede pagar más de <strong>$1.200.000 al año</strong> solo en patentes. Eso sin contar seguro, VTV, combustible, estacionamiento ni el impuesto nacional a los Bienes Personales que ya grava ese mismo patrimonio.
+      La <strong>Resolución del Ministerio de Justicia 272/2024</strong> (publicada el 2 de septiembre de 2024) eliminó los «polígonos de división seccional» y creó una jurisdicción única nacional para los Registros del Automotor. Por primera vez, cualquier argentino puede elegir libremente en qué Registro inscribe su vehículo, sin que deba corresponder al domicilio del DNI.
     </p>
     <p>
-      Lo más llamativo es la <strong>disparidad entre jurisdicciones</strong>. Dos vecinos, uno viviendo en CABA y otro cruzando la General Paz en Vicente López, pueden pagar montos radicalmente distintos por el mismo auto. La diferencia no tiene justificación en servicios: las rutas y calles no son significativamente mejores en una jurisdicción que en otra.
-    </p>
-    <p>
-      En la práctica, las patentes se convirtieron en una de las principales fuentes de recaudación de provincias y municipios. Esto genera un incentivo perverso: <strong>cuanto más caros son los autos (por inflación o por devaluación), más recaudan las provincias</strong>, sin necesidad de crear valor ni mejorar servicios.
-    </p>
-
-    <h3>El punto de inflexión: Decreto 272/2024</h3>
-    <p>
-      En marzo de 2024, el gobierno nacional publicó el <strong>Decreto 272/2024</strong>, que eliminó la obligación de inscribir el vehículo en un Registro Seccional correspondiente al domicilio del DNI del titular. Por primera vez, cualquier argentino puede elegir libremente en qué Registro del país inscribe su auto.
-    </p>
-    <p>
-      La medida fue complementada por la <strong>Circular DN N.° 20/25</strong> de la Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor (DNRPA), que instrumentó operativamente el cambio. Antes, cambiar la radicación requería primero cambiar el domicilio del DNI — una barrera burocrática enorme.
+      La norma fue complementada por el <strong>DNU 70/2023</strong>, que derogó los artículos 11, 12 y 21 del Decreto 335/1988 que exigían inscripción en el Registro del domicilio. La libre elección es hoy una realidad normativa — aunque con matices importantes que explicamos más adelante.
     </p>
 
     <div class="callout">
-      <h4>💡 ¿Qué significa esto en la práctica?</h4>
-      <p>Si vivís en Provincia de Buenos Aires y pagás alícuotas del 4-5%, podés trasladar la radicación de tu auto a una provincia con tasas del 1% o menos. <strong>Legalmente. Sin cambiar tu domicilio.</strong> Esto no es evasión: es planificación fiscal, exactamente igual a cuando una empresa elige su domicilio fiscal.</p>
+      <h4>⚠️ Importante: Inscripción vs. Radicación</h4>
+      <p>La libre elección permite <strong>inscribir</strong> el vehículo en cualquier Registro del país. Sin embargo, la <strong>radicación impositiva</strong> — que determina dónde se pagan patentes — debe corresponder al domicilio real del titular según los códigos fiscales provinciales. No es tan simple como «elegí cualquier provincia y listo».</p>
     </div>
-
-    <h3>¿Impuesto o extorsión?</h3>
-    <p>
-      La naturaleza del impuesto a las patentes merece un debate constitucional serio. Un impuesto patrimonial sobre bienes muebles específicos, cobrado por provincias, sin correlación con servicios prestados, y con alícuotas que pueden superar el rendimiento anual de ese bien, se parece más a una <strong>confiscación progresiva</strong> que a un tributo razonable.
-    </p>
-    <p>
-      En ningún país desarrollado existe un impuesto anual sobre el valor de mercado de un automóvil que alcance los niveles argentinos. En Estados Unidos, la mayoría de los estados cobran una <strong>registration fee fija</strong> de entre USD 30 y USD 200. En Europa, los impuestos vehiculares se basan en emisiones de CO₂ o cilindrada, no en el valor del auto. Argentina es una anomalía global.
-    </p>
   </div>
 </section>
 
 <!-- COMPARATIVA -->
 <section id="comparativa">
   <div class="container wide">
-    <div class="section-label">Datos</div>
-    <h2>Comparativa de tasas por jurisdicción (2025)</h2>
-    <p>Alícuotas anuales sobre valor de mercado del vehículo. Las tasas varían según escalas de valuación; se muestra el rango aproximado.</p>
+    <div class="section-label">Datos 2026</div>
+    <h2>Comparativa de patentes por jurisdicción</h2>
+    <p>Alícuotas anuales 2026. Referencia: <strong>Peugeot 208 valuado en $24.300.000</strong>. Las tasas varían según escalas de valuación; se muestra la alícuota o rango aplicable.</p>
 
     <div class="chart-container">
       <div class="bar-chart" id="chart">
@@ -421,83 +443,72 @@ footer a { color: var(--accent); text-decoration: none; }
         <thead>
           <tr>
             <th>Jurisdicción</th>
-            <th>Alícuota anual</th>
-            <th>Auto de $30M</th>
-            <th>Auto de $80M</th>
+            <th>Alícuota</th>
+            <th>Anual (Peugeot 208)</th>
             <th>Nivel</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><strong>Buenos Aires (PBA)</strong></td>
-            <td>3.5% – 5%</td>
-            <td>$1.050.000 – $1.500.000</td>
-            <td>$2.800.000 – $4.000.000</td>
-            <td><span class="tag tag-high">MUY ALTO</span></td>
-          </tr>
-          <tr>
-            <td><strong>CABA</strong></td>
-            <td>2.5% – 3.8%</td>
-            <td>$750.000 – $1.140.000</td>
-            <td>$2.000.000 – $3.040.000</td>
-            <td><span class="tag tag-high">ALTO</span></td>
-          </tr>
-          <tr>
-            <td><strong>Santa Fe</strong></td>
-            <td>2.5% – 3.5%</td>
-            <td>$750.000 – $1.050.000</td>
-            <td>$2.000.000 – $2.800.000</td>
-            <td><span class="tag tag-high">ALTO</span></td>
-          </tr>
-          <tr>
-            <td><strong>Córdoba</strong></td>
-            <td>2% – 3.2%</td>
-            <td>$600.000 – $960.000</td>
-            <td>$1.600.000 – $2.560.000</td>
-            <td><span class="tag tag-mid">MEDIO-ALTO</span></td>
-          </tr>
-          <tr>
-            <td><strong>Mendoza</strong></td>
-            <td>1.8% – 2.8%</td>
-            <td>$540.000 – $840.000</td>
-            <td>$1.440.000 – $2.240.000</td>
-            <td><span class="tag tag-mid">MEDIO</span></td>
-          </tr>
-          <tr>
-            <td><strong>Tucumán</strong></td>
-            <td>1.5% – 2.5%</td>
-            <td>$450.000 – $750.000</td>
-            <td>$1.200.000 – $2.000.000</td>
-            <td><span class="tag tag-mid">MEDIO</span></td>
-          </tr>
-          <tr>
-            <td><strong>La Pampa</strong></td>
-            <td>1% – 1.8%</td>
-            <td>$300.000 – $540.000</td>
-            <td>$800.000 – $1.440.000</td>
-            <td><span class="tag tag-low">BAJO</span></td>
-          </tr>
-          <tr>
-            <td><strong>Formosa</strong></td>
-            <td>0.8% – 1.5%</td>
-            <td>$240.000 – $450.000</td>
-            <td>$640.000 – $1.200.000</td>
-            <td><span class="tag tag-low">BAJO</span></td>
-          </tr>
-          <tr>
-            <td><strong>Tierra del Fuego</strong></td>
-            <td>0.4% – 0.8%</td>
-            <td>$120.000 – $240.000</td>
-            <td>$320.000 – $640.000</td>
-            <td><span class="tag tag-low">MUY BAJO</span></td>
-          </tr>
+          <tr><td><strong>San Juan</strong></td><td>0,5%</td><td>$121.500</td><td><span class="tag tag-low">MUY BAJO</span></td></tr>
+          <tr><td><strong>Chaco</strong></td><td>0,6%</td><td>$145.771</td><td><span class="tag tag-low">MUY BAJO</span></td></tr>
+          <tr><td><strong>Formosa</strong></td><td>0,7%</td><td>$170.100</td><td><span class="tag tag-low">BAJO</span></td></tr>
+          <tr><td><strong>Tierra del Fuego</strong></td><td>1,0%</td><td>$243.000</td><td><span class="tag tag-low">BAJO</span></td></tr>
+          <tr><td><strong>Catamarca</strong></td><td>1,0%</td><td>$243.000</td><td><span class="tag tag-low">BAJO</span></td></tr>
+          <tr><td><strong>Córdoba</strong></td><td>0,85% – 2,1%</td><td>$294.572</td><td><span class="tag tag-mid">MEDIO</span></td></tr>
+          <tr><td><strong>Sgo. del Estero</strong></td><td>1,8%</td><td>$437.760</td><td><span class="tag tag-mid">MEDIO</span></td></tr>
+          <tr><td><strong>Tucumán</strong></td><td>2,0%</td><td>$486.400</td><td><span class="tag tag-mid">MEDIO</span></td></tr>
+          <tr><td><strong>Salta / Jujuy / Neuquén</strong></td><td>2,0%</td><td>$486.400</td><td><span class="tag tag-mid">MEDIO</span></td></tr>
+          <tr><td><strong>Santa Fe</strong></td><td>1,8% – 2,3%</td><td>Variable</td><td><span class="tag tag-mid">MEDIO-ALTO</span></td></tr>
+          <tr><td><strong>La Rioja</strong></td><td>2,5%</td><td>$608.000</td><td><span class="tag tag-high">ALTO</span></td></tr>
+          <tr><td><strong>La Pampa</strong></td><td>3,0%</td><td>$729.600</td><td><span class="tag tag-high">ALTO</span></td></tr>
+          <tr><td><strong>Santa Cruz</strong></td><td>3,0%</td><td>$729.600</td><td><span class="tag tag-high">ALTO</span></td></tr>
+          <tr><td><strong>Río Negro / San Luis</strong></td><td>3,5%</td><td>$851.200</td><td><span class="tag tag-high">ALTO</span></td></tr>
+          <tr><td><strong>Prov. Buenos Aires</strong></td><td>1% – 4,5%</td><td>Hasta $1.146.909</td><td><span class="tag tag-high">MUY ALTO</span></td></tr>
+          <tr><td><strong>CABA</strong></td><td>1,6% – 8%</td><td>Hasta $1.146.909+</td><td><span class="tag tag-high">MUY ALTO</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <h4>📊 Dato clave</h4>
+      <p>Contrario a la creencia popular, <strong>La Pampa NO es de las más baratas</strong> (puesto 11 de 24). Las verdaderamente económicas son <strong>San Juan, Chaco, Formosa, Tierra del Fuego y Catamarca</strong>.</p>
+    </div>
+
+    <h3>Escalas progresivas: PBA (2026)</h3>
+    <p>La Provincia de Buenos Aires aplica un sistema de 5 tramos con monto fijo + alícuota sobre el excedente:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tramo</th><th>Valuación</th><th>Fijo</th><th>Alícuota s/excedente</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Hasta $14.100.000</td><td>$0</td><td>1,00%</td></tr>
+          <tr><td>2</td><td>$14.100.000 – $18.700.000</td><td>$141.000</td><td>2,00%</td></tr>
+          <tr><td>3</td><td>$18.700.000 – $26.100.000</td><td>$233.000</td><td>3,00%</td></tr>
+          <tr><td>4</td><td>$26.100.000 – $53.900.000</td><td>$455.000</td><td>4,00%</td></tr>
+          <tr><td>5</td><td>Más de $53.900.000</td><td>$1.567.000</td><td>4,50%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Escalas progresivas: CABA (2026)</h3>
+    <p>La Ciudad Autónoma de Buenos Aires aplica 7 tramos, llegando al 8% para vehículos de alta gama:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Valuación</th><th>Fijo</th><th>Alícuota s/excedente</th></tr></thead>
+        <tbody>
+          <tr><td>$0 – $7.460.000</td><td>$0</td><td>1,60%</td></tr>
+          <tr><td>$7.460.000 – $17.155.000</td><td>$119.350</td><td>4,00%</td></tr>
+          <tr><td>$17.155.000 – $26.850.000</td><td>$507.150</td><td>4,50%</td></tr>
+          <tr><td>$26.850.000 – $36.550.000</td><td>$943.500</td><td>5,50%</td></tr>
+          <tr><td>$36.550.000 – $50.350.000</td><td>$1.477.000</td><td>6,50%</td></tr>
+          <tr><td>$50.350.000 – $73.100.000</td><td>$2.374.000</td><td>7,00%</td></tr>
+          <tr><td>Más de $73.100.000</td><td>$3.965.000</td><td>8,00%</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="callout red">
       <h4>🔴 El caso extremo</h4>
-      <p>Un auto de $80.000.000 radicado en PBA paga hasta <strong>$4.000.000/año</strong> en patentes. El mismo auto en Tierra del Fuego: <strong>$400.000/año</strong>. La diferencia es de <strong>$3.600.000 por año</strong> — solo por elegir otra jurisdicción. En 5 años, la diferencia acumulada supera los $18.000.000.</p>
+      <p>Un Peugeot 208 ($24,3M) paga <strong>$121.500/año en San Juan</strong> vs. hasta <strong>$1.146.909 en PBA/CABA</strong>. La diferencia es de más de <strong>$1.000.000 por año</strong> — casi 10 veces más. En 5 años, la diferencia acumulada supera los $5.000.000.</p>
     </div>
   </div>
 </section>
@@ -513,44 +524,113 @@ footer a { color: var(--accent); text-decoration: none; }
       <div class="intl-card">
         <div class="flag">🇺🇸</div>
         <h4>Estados Unidos</h4>
-        <div class="rate">USD 30 – 200/año</div>
-        <p>La mayoría de los estados cobran un <strong>registration fee fijo</strong>, sin relación al valor del vehículo. Algunos estados (Virginia, Connecticut) cobran un property tax vehicular del 1-4%, pero es la excepción y se compensa con impuestos generales más bajos.</p>
+        <div class="rate">USD 30 – 150/año</div>
+        <p>La mayoría de los estados cobran un <strong>registration fee fijo</strong>. Florida ~USD 35, Texas ~USD 50. California cobra 0,65% (VLF) como excepción. <strong>Ningún estado alcanza los niveles argentinos.</strong></p>
       </div>
       <div class="intl-card">
         <div class="flag">🇩🇪</div>
         <h4>Alemania</h4>
-        <div class="rate">€ 50 – 300/año</div>
-        <p>El <em>Kfz-Steuer</em> se basa en <strong>cilindrada y emisiones de CO₂</strong>, no en el valor del auto. Un BMW Serie 3 diésel paga ~€200/año. Un Tesla: €0. El impuesto es ambiental, no patrimonial.</p>
+        <div class="rate">€ 68 – 270/año</div>
+        <p>El <em>Kfz-Steuer</em> se basa en <strong>cilindrada + emisiones CO₂</strong>, no en el valor. BMW 320d: ~€270/año. Fiat 500: ~€68/año. Eléctricos exentos hasta 2030. Impuesto ambiental, no patrimonial.</p>
+      </div>
+      <div class="intl-card">
+        <div class="flag">🇬🇧</div>
+        <h4>Reino Unido</h4>
+        <div class="rate">£0 – 195/año</div>
+        <p>El <em>Vehicle Excise Duty</em> depende de <strong>emisiones CO₂</strong>. 0g/km = £0. Tarifa estándar: £195/año flat. Suplemento de £425/año para autos &gt;£40.000. <strong>El valor del auto no importa.</strong></p>
       </div>
       <div class="intl-card">
         <div class="flag">🇨🇱</div>
         <h4>Chile</h4>
-        <div class="rate">~0.5% – 1%/año</div>
-        <p>El <em>permiso de circulación</em> tiene un componente ad valorem, pero con alícuotas mucho menores que Argentina. Un auto de USD 25.000 paga aproximadamente USD 125 – 250 al año.</p>
+        <div class="rate">1% – 4,5% progresivo</div>
+        <p><em>Permiso de Circulación</em> ad valorem. Auto de USD 26.000: ~USD 525/año. EVs e híbridos pagan solo el 25%. Sistema progresivo similar al argentino pero con beneficios verdes.</p>
       </div>
       <div class="intl-card">
         <div class="flag">🇧🇷</div>
         <h4>Brasil</h4>
         <div class="rate">2% – 4%/año</div>
-        <p>El <em>IPVA</em> es similar al sistema argentino: un porcentaje sobre el valor del vehículo. Brasil es uno de los pocos países que comparte este modelo con Argentina. São Paulo cobra 4%, Minas Gerais 3%.</p>
+        <p>El <em>IPVA</em> es el sistema más similar al argentino: porcentaje sobre el valor del vehículo. São Paulo/MG/RJ = 4%. Santa Catarina = 2%. <strong>Comparable a Argentina en niveles.</strong></p>
       </div>
       <div class="intl-card">
-        <div class="flag">🇬🇧</div>
-        <h4>Reino Unido</h4>
-        <div class="rate">£ 0 – 190/año</div>
-        <p>El <em>Vehicle Excise Duty</em> depende exclusivamente de <strong>emisiones de CO₂</strong>. Autos eléctricos: £0. Autos de altas emisiones: £190/año máximo para autos nuevos estándar. El valor del auto es irrelevante.</p>
+        <div class="flag">🇺🇾</div>
+        <h4>Uruguay</h4>
+        <div class="rate">~4,5% (nuevo)</div>
+        <p><em>Patente de Rodados</em>: ~4,5% para autos nuevos, decreciente con la antigüedad. Auto de USD 20.000: ~USD 900/año. Sistema alto pero con depreciación incorporada.</p>
+      </div>
+      <div class="intl-card">
+        <div class="flag">🇵🇾</div>
+        <h4>Paraguay</h4>
+        <div class="rate">~0,3% (depreciado)</div>
+        <p>Impuesto sobre valor depreciado. Toyota Corolla 2020: ~USD 29/año. <strong>El más barato de la región</strong> por amplio margen.</p>
       </div>
       <div class="intl-card">
         <div class="flag">🇦🇷</div>
-        <h4>Argentina (PBA)</h4>
-        <div class="rate">3.5% – 5%/año</div>
-        <p>Un auto de USD 25.000 al tipo de cambio actual (~$30M) paga entre <strong>$1.050.000 y $1.500.000/año</strong> (~USD 850 – 1.200). Es uno de los impuestos vehiculares anuales más altos del mundo en términos relativos.</p>
+        <h4>Argentina (PBA/CABA)</h4>
+        <div class="rate">1% – 8%/año</div>
+        <p>Impuesto patrimonial sobre valor de mercado sin depreciación real. Un auto de $24,3M puede pagar hasta <strong>$1.146.909/año</strong>. De los más altos del mundo en términos relativos.</p>
       </div>
     </div>
 
     <div class="callout">
       <h4>📊 En resumen</h4>
-      <p>De todos los países comparados, solo <strong>Brasil</strong> tiene un sistema similar al argentino. La mayoría del mundo desarrollado NO cobra impuestos anuales sobre el valor de mercado de los vehículos. Argentina cobra tasas que pueden ser <strong>5 a 50 veces superiores</strong> a las de países con infraestructura vial incomparablemente mejor.</p>
+      <p>Solo <strong>Brasil, Chile y Uruguay</strong> tienen sistemas ad valorem similares. La mayoría del mundo desarrollado NO cobra impuestos anuales sobre el valor de mercado de los vehículos. Argentina — especialmente CABA y PBA — cobra tasas que pueden ser <strong>5 a 50 veces superiores</strong> a las de países con infraestructura vial incomparablemente mejor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARCO LEGAL -->
+<section id="legal">
+  <div class="container">
+    <div class="section-label">Normativa</div>
+    <h2>Marco legal completo</h2>
+    <p>Las normas que configuran el sistema actual de libre elección y sus limitaciones:</p>
+
+    <div class="legal-card">
+      <span class="tag-label">RESOLUCIÓN MINISTERIAL</span>
+      <h4>Resolución M.J. 272/2024</h4>
+      <p>Publicada el <strong>2 de septiembre de 2024</strong> por el Ministerio de Justicia. Principales cambios:</p>
+      <p>• Creó el <strong>Legajo Digital Único (LDU)</strong> para cada vehículo<br>
+      • Creó el <strong>Certificado Digital Automotor (CDA)</strong><br>
+      • Eliminó los «polígonos de división seccional» → <strong>jurisdicción única nacional</strong><br>
+      • Redujo aranceles: transferencia = 1% del valor; eliminó cargos por cédulas, títulos y chapas</p>
+      <p><strong>Nota:</strong> Es una Resolución ministerial, no un Decreto como se difundió erróneamente en algunos medios.</p>
+    </div>
+
+    <div class="legal-card">
+      <span class="tag-label">CIRCULAR DNRPA</span>
+      <h4>Circular DN 20/2024</h4>
+      <p>Instrumentó operativamente la <strong>libre elección de Registro para inscripciones 0km</strong>. Los concesionarios pueden inscribir vehículos nuevos en cualquier Registro del país sin que deba corresponder al domicilio del comprador.</p>
+    </div>
+
+    <div class="legal-card">
+      <span class="tag-label">DISPOSICIÓN</span>
+      <h4>Disposición 142/2024</h4>
+      <p>Estableció que los Registros Seccionales <strong>solo pueden cobrar Sellos e impuesto a las patentes si el titular lo solicita expresamente</strong>. Los registros no pueden actuar como agentes de cobro compulsivo por cuenta propia.</p>
+    </div>
+
+    <div class="legal-card">
+      <span class="tag-label">CIRCULAR 2025</span>
+      <h4>Circular DN 19/2025</h4>
+      <p>Deshabilitó las <strong>«ventanillas virtuales impositivas»</strong> en los sistemas informáticos de los Registros. Las provincias ya no pueden utilizar los Registros como canal de cobro de impuestos provinciales.</p>
+    </div>
+
+    <div class="legal-card">
+      <span class="tag-label">ANTECEDENTE</span>
+      <h4>Régimen anterior: Decreto 335/1988</h4>
+      <p>Exigía que la inscripción se realizara en el Registro correspondiente al domicilio del DNI del titular. Los <strong>artículos 11, 12 y 21 fueron derogados por el DNU 70/2023</strong>, abriendo camino a la libre elección.</p>
+    </div>
+
+    <div class="legal-card">
+      <span class="tag-label">CONFLICTO VIGENTE</span>
+      <h4>ARBA vs. Ministerio de Justicia</h4>
+      <p>La <strong>Resolución Normativa ARBA 26/2024</strong> designó a los Registros como agentes de recaudación obligatoria de patentes bonaerenses. El Ministerio de Justicia demandó la inconstitucionalidad.</p>
+      <p>El Juzgado Federal N° 4 de La Plata inicialmente suspendió la resolución de ARBA, pero la <strong>Cámara Federal de La Plata revocó la cautelar en septiembre 2025</strong>. Resultado: <strong>los Registros en PBA deben continuar cobrando patentes bonaerenses</strong>. El caso sigue abierto.</p>
+    </div>
+
+    <div class="callout blue">
+      <h4>⚖️ Eludir vs. Evadir — Con matices</h4>
+      <p>La <strong>elusión fiscal</strong> consiste en utilizar mecanismos legales para reducir la carga tributaria. Es lícita. La <strong>evasión</strong> implica ocultar hechos imponibles o no pagar lo debido.</p>
+      <p>Sin embargo, el cambio de radicación tiene una zona gris importante: si no tenés domicilio real ni guardás habitualmente el vehículo en la jurisdicción de destino, las provincias pueden considerarlo <strong>simulación</strong> y reclamar la diferencia. AGIP (CABA) y ARBA (PBA) persiguen activamente estos casos. La línea entre planificación fiscal legítima y artificio indebido depende de la sustancia real de la operación.</p>
     </div>
   </div>
 </section>
@@ -560,78 +640,125 @@ footer a { color: var(--accent); text-decoration: none; }
   <div class="container">
     <div class="section-label">Guía práctica</div>
     <h2>Cómo cambiar la radicación de tu vehículo</h2>
-    <p>Desde el Decreto 272/2024, ya no necesitás que tu domicilio del DNI coincida con la ubicación del Registro. Estos son los pasos:</p>
+    <p>El proceso requiere presentación presencial para firmas y documentos originales. No es 100% online. Podés usar un gestor con poder notarial. Plazo estimado: <strong>5 a 15 días hábiles</strong> (hasta 30 con correcciones).</p>
+
+    <div class="callout red" style="margin-bottom:32px">
+      <h4>🔴 Requisito fundamental</h4>
+      <p>Debés tener <strong>domicilio real en la jurisdicción de destino</strong> O demostrar guarda habitual del vehículo allí (título de propiedad, contrato de alquiler, etc.). Declarar un domicilio ficticio tiene consecuencias graves: multas de ARCA ($150 a $45.000), bloqueo de CUIT, categorización negativa en SIPER, y potencial procesamiento penal por falsificación documental.</p>
+    </div>
+
+    <h3>Documentación necesaria</h3>
+    <p>
+      • <strong>Solicitud Tipo 04</strong> (gratuita con firma certificada en el Registro)<br>
+      • DNI original del titular<br>
+      • Título del Automotor original<br>
+      • Cédula del vehículo<br>
+      • Comprobante de nuevo domicilio (DNI actualizado, factura de servicio, contrato de alquiler o escritura)<br>
+      • CUIT/CUIL<br>
+      • Formulario 59 si se tramita por tercero (gestor)<br>
+      • <strong>Verificación física policial (Formulario 12)</strong> — obligatoria para cambios entre jurisdicciones
+    </p>
 
     <div class="steps">
       <div class="step">
         <h4>Investigá las alícuotas de destino</h4>
-        <p>Consultá las tasas de patentes de la jurisdicción a la que querés trasladar tu auto. Las provincias patagónicas y del norte suelen tener las tasas más bajas. Verificá en la web de Rentas de cada provincia las alícuotas vigentes.</p>
+        <p>Consultá las tasas de patentes vigentes de la jurisdicción a la que querés trasladar tu auto. Verificá en la web de Rentas de cada provincia. Recordá: necesitás justificar domicilio real o guarda habitual allí.</p>
       </div>
       <div class="step">
-        <h4>Solicitar la baja tributaria</h4>
+        <h4>Gestionar la baja tributaria</h4>
         <p>Antes de cambiar de registro, debés gestionar la <strong>baja tributaria</strong> en la jurisdicción actual. Esto implica estar al día con las patentes y solicitar un libre deuda. En PBA se gestiona en ARBA; en CABA, en AGIP.</p>
         <p><strong>⚠️ Importante:</strong> Si tenés deuda de patentes, primero debés regularizarla o adherirte a un plan de pagos.</p>
       </div>
       <div class="step">
-        <h4>Elegir el Registro Seccional de destino</h4>
-        <p>Podés elegir <strong>cualquier Registro Seccional del país</strong>. No necesitás tener domicilio, propiedad ni vínculo alguno con esa jurisdicción. Consultá la lista completa de Registros en la web de la DNRPA.</p>
+        <h4>Actualizar domicilio en ARCA</h4>
+        <p>Debés tener tu domicilio fiscal actualizado en ARCA (ex AFIP) en la jurisdicción de destino. ARCA verifica direcciones mediante confirmación postal y visitas físicas.</p>
       </div>
       <div class="step">
-        <h4>Presentar la documentación</h4>
-        <p>Acudí al Registro Seccional de destino (o iniciá el trámite en tu Registro actual para la transferencia) con:</p>
-        <p>• Título del automotor original<br>
-        • DNI del titular<br>
-        • Cédula verde/azul<br>
-        • Libre deuda de patentes (baja tributaria)<br>
-        • Verificación policial vigente<br>
-        • Formulario 13 (solicitud de inscripción)</p>
+        <h4>Presentar documentación en el Registro</h4>
+        <p>Acudí al Registro Seccional de destino con toda la documentación. Es <strong>presencial</strong>: se requieren firmas originales y verificación de identidad. Podés otorgar poder notarial a un gestor.</p>
       </div>
       <div class="step">
-        <h4>Pagar los aranceles registrales</h4>
-        <p>El cambio de radicación tiene un costo de aranceles de la DNRPA. El monto varía pero ronda los <strong>$50.000 – $150.000</strong> (2025). Este es un costo único que, comparado con el ahorro anual en patentes, se recupera en semanas.</p>
+        <h4>Verificación policial</h4>
+        <p>Para cambios entre jurisdicciones se requiere <strong>verificación física policial (Formulario 12)</strong>. El vehículo debe ser inspeccionado presencialmente.</p>
       </div>
       <div class="step">
-        <h4>Recibir la nueva documentación</h4>
-        <p>El Registro emitirá un nuevo título y cédula con la radicación actualizada. A partir de ese momento, las patentes se cobran según la alícuota de la nueva jurisdicción. <strong>¡Listo!</strong></p>
+        <h4>Pagar aranceles registrales</h4>
+        <p>Los aranceles de la DNRPA son regulados y relativamente accesibles. Ver tabla de costos abajo.</p>
       </div>
+      <div class="step">
+        <h4>Recibir nueva documentación</h4>
+        <p>El Registro emitirá título y cédula con la radicación actualizada. A partir de ese momento, las patentes se cobran según la nueva jurisdicción.</p>
+      </div>
+    </div>
+
+    <h3>Costos (aranceles DNRPA vigentes)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Concepto</th><th>Monto</th></tr></thead>
+        <tbody>
+          <tr><td>Cambio de domicilio sin envío de legajo</td><td>$490</td></tr>
+          <tr><td>Cambio de domicilio con envío de legajo</td><td>$1.200</td></tr>
+          <tr><td>Certificación de firma</td><td>$1.300/firma</td></tr>
+          <tr><td>Alta impositiva</td><td>$650</td></tr>
+          <tr><td>Baja impositiva</td><td>$650</td></tr>
+          <tr><td>Expedición de cédula</td><td>$5.290</td></tr>
+          <tr><td>Expedición de título</td><td>$2.580</td></tr>
+          <tr><td>Transferencia con cambio de radicación</td><td>1% del valor (mín. $13.100)</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="callout">
       <h4>💰 ¿Cuánto podés ahorrar?</h4>
-      <p>Para un auto valuado en $50.000.000, pasar de PBA (4%) a una provincia con tasa del 1% implica un ahorro de aproximadamente <strong>$1.500.000 por año</strong>. El costo del trámite se recupera en el primer mes.</p>
+      <p>Para un Peugeot 208 ($24,3M), pasar de PBA/CABA a San Juan implica un ahorro potencial de más de <strong>$1.000.000 por año</strong>. El costo total del trámite (aranceles + cédula + título) ronda los $10.000-$15.000 — se recupera en días. <strong>Pero solo si tenés domicilio real o guarda habitual en destino.</strong></p>
     </div>
   </div>
 </section>
 
-<!-- MARCO LEGAL -->
-<section id="legal">
+<!-- EXPERTOS -->
+<section id="expertos">
   <div class="container">
-    <div class="section-label">Normativa</div>
-    <h2>Marco legal</h2>
-    <p>Las normas que habilitan la libre elección de Registro y el cambio de radicación:</p>
+    <div class="section-label">Análisis</div>
+    <h2>Qué dicen los especialistas</h2>
+    <p>Opiniones de tributaristas, constitucionalistas y referentes del sector automotor sobre el impuesto a las patentes y la libre elección de registro.</p>
 
-    <div class="legal-card">
-      <span class="tag-label">DECRETO NACIONAL</span>
-      <h4>Decreto 272/2024 (PEN)</h4>
-      <p>Publicado el 27 de marzo de 2024 en el Boletín Oficial. Modifica el régimen de los Registros Seccionales de la Propiedad del Automotor, <strong>eliminando la exigencia de que el Registro corresponda al domicilio del DNI del titular</strong>. Establece la libre elección de Registro en todo el territorio nacional.</p>
-      <p>Fundamentos: el decreto se enmarca en la política de desregulación y simplificación administrativa del gobierno nacional, eliminando una restricción que no tenía justificación jurídica sólida y que limitaba la libertad de los ciudadanos.</p>
-    </div>
-
-    <div class="legal-card">
-      <span class="tag-label">CIRCULAR DNRPA</span>
-      <h4>Circular DN N.° 20/25</h4>
-      <p>Emitida por la Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y Créditos Prendarios. <strong>Instrumenta operativamente</strong> lo dispuesto por el Decreto 272/2024, estableciendo los procedimientos específicos para que los Registros Seccionales tramiten inscripciones y cambios de radicación sin exigir correspondencia con el domicilio del titular.</p>
-    </div>
-
-    <div class="legal-card">
-      <span class="tag-label">ANTECEDENTE</span>
-      <h4>Régimen anterior</h4>
-      <p>Antes del Decreto 272/2024, el Decreto 335/88 y normas complementarias establecían que la inscripción inicial y los cambios de titularidad debían realizarse en el Registro Seccional correspondiente al domicilio del titular según su DNI. Para cambiar de jurisdicción, era necesario primero <strong>cambiar el domicilio en el DNI</strong> — un trámite engorroso que desincentivaba la movilidad registral.</p>
+    <div class="expert-grid">
+      <div class="expert-card">
+        <div class="name"><a href="https://www.lanacion.com.ar/autos/que-pasa-si-se-inscribe-un-auto-en-otra-provincia-y-por-que-habria-que-pagar-dos-patentes-nid07042025/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--accent)">Sebastián Domínguez</a></div>
+        <div class="role">CEO, SDC Asesores Tributarios</div>
+        <div class="quote">«Si uno patenta el auto en otra jurisdicción, no quiere decir que la suya no le pueda reclamar parte de la patente.» Advierte sobre el riesgo real de doble imposición: CABA puede presumir uso habitual y exigir la diferencia. <small><a href="https://www.lanacion.com.ar/autos/que-pasa-si-se-inscribe-un-auto-en-otra-provincia-y-por-que-habria-que-pagar-dos-patentes-nid07042025/" target="_blank" rel="noopener" style="color:var(--accent)">Fuente: La Nación</a></small></div>
+      </div>
+      <div class="expert-card">
+        <div class="name"><a href="https://arodarpost.com.ar/argentina-el-pais-donde-cuando-se-compra-un-auto-se-pagan-dos/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--accent)">César Litvin</a></div>
+        <div class="role">CEO, Lisicki, Litvin &amp; Abelovich</div>
+        <div class="quote">Argumenta que las valuaciones fiscales que superan el valor real de mercado constituyen «confiscatoriedad por riqueza ficticia» — se grava un valor que el contribuyente no posee realmente. <small><a href="https://arodarpost.com.ar/argentina-el-pais-donde-cuando-se-compra-un-auto-se-pagan-dos/" target="_blank" rel="noopener" style="color:var(--accent)">Fuente: La Nación / ArodarPost</a></small></div>
+      </div>
+      <div class="expert-card">
+        <div class="name">Daniel Sabsay</div>
+        <div class="role">Constitucionalista</div>
+        <div class="quote">Sostiene que la patente desvirtuó su naturaleza original de tasa retributiva y hoy funciona como impuesto patrimonial. Cuestiona la razonabilidad de cobrar 4-5% anual de patentes más Bienes Personales sobre el mismo vehículo — doble imposición sobre un bien mueble. <small style="color:var(--text3)">(Postura doctrinaria sostenida en conferencias sobre federalismo fiscal)</small></div>
+      </div>
+      <div class="expert-card">
+        <div class="name"><a href="https://eleconomista.com.ar/autos/el-sector-automotor-un-monumento-distorsion-totalmente-degenerado-n75743" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--accent)">Federico Pieruzzini</a></div>
+        <div class="role">CEO, Eximar (Volvo, Land Rover, Jaguar, Geely)</div>
+        <div class="quote">El sector automotor es un «monumento a la distorsión totalmente degenerado» — la carga impositiva total sobre vehículos alcanza entre el 75% y 100% del precio antes de impuestos, según el tramo de Impuestos Internos. <small><a href="https://eleconomista.com.ar/autos/el-sector-automotor-un-monumento-distorsion-totalmente-degenerado-n75743" target="_blank" rel="noopener" style="color:var(--accent)">Fuente: El Economista</a></small></div>
+      </div>
+      <div class="expert-card">
+        <div class="name"><a href="https://www.cadena3.com/noticia/noticias-rosario/cuestionamiento-a-la-imposicion-de-patentes-en-10-anos-se-paga-medio-auto_435472" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--accent)">Franco Pérez Rocca</a></div>
+        <div class="role">Investigador, Grupo Joven — Fundación Libertad (Rosario)</div>
+        <div class="quote">«En 10 años se paga medio vehículo» solo en patentes. «No hay un destino claro para este impuesto. Termina en las arcas provinciales, y no se destina a la mejora de infraestructuras como rutas y calles.» El informe 2025 de Fundación Libertad califica a la patente como impuesto al patrimonio local con alícuotas superiores al de Bienes Personales. <small><a href="https://www.cadena3.com/noticia/noticias-rosario/cuestionamiento-a-la-imposicion-de-patentes-en-10-anos-se-paga-medio-auto_435472" target="_blank" rel="noopener" style="color:var(--accent)">Fuente: Cadena 3 Rosario</a></small></div>
+      </div>
+      <div class="expert-card">
+        <div class="name"><a href="https://arodarpost.com.ar/argentina-el-pais-donde-cuando-se-compra-un-auto-se-pagan-dos/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--accent)">ACARA / ADEFA</a></div>
+        <div class="role">Cámaras del sector automotor</div>
+        <div class="quote">Estiman que los impuestos explican entre el 45% y 54% del costo total de un auto estándar en Argentina. Para vehículos alcanzados por Impuestos Internos, la incidencia fiscal alcanza el 75% (primer tramo) y hasta 100% (segundo tramo) del precio antes de impuestos. <small><a href="https://arodarpost.com.ar/argentina-el-pais-donde-cuando-se-compra-un-auto-se-pagan-dos/" target="_blank" rel="noopener" style="color:var(--accent)">Fuente: Litvin-Pieruzzini / La Nación</a></small></div>
+      </div>
     </div>
 
     <div class="callout">
-      <h4>⚖️ Principio jurídico clave</h4>
-      <p><strong>Eludir ≠ Evadir.</strong> La elusión fiscal consiste en utilizar mecanismos legales para reducir la carga tributaria. Es perfectamente lícita. La evasión, en cambio, implica ocultar hechos imponibles o no pagar lo debido. Cambiar la radicación de un vehículo es un acto legal, transparente y registrado ante el Estado. No hay zona gris.</p>
+      <h4>⚖️ Precedente judicial: Baker Hughes (2019)</h4>
+      <p>En <em>Baker Hughes Argentina S.R.L. c/ GCBA</em>, la empresa tenía vehículos radicados en Neuquén y Chubut porque operaban en yacimientos petroleros. AGIP quiso cobrarles patentes porque la sede social estaba en Buenos Aires. La Justicia falló a favor de la empresa porque probó que los autos «dormían» y trabajaban en el sur, no en CABA.</p>
+      <p><strong>⚠️ Importante:</strong> Este fallo NO habilita a radicar el auto ficticiamente en otro lado para pagar menos. Habilita a no pagar en CABA si <em>realmente</em> el auto no está ahí. Si vivís en Palermo y radicás en el interior solo por la alícuota, Baker Hughes no te protege — tu guarda habitual sigue siendo CABA.</p>
     </div>
   </div>
 </section>
@@ -640,61 +767,75 @@ footer a { color: var(--accent); text-decoration: none; }
 <section id="faq">
   <div class="container">
     <div class="section-label">Preguntas frecuentes</div>
-    <h2>FAQ</h2>
+    <h2>FAQ — Con los riesgos reales</h2>
 
     <div class="faq-item">
-      <div class="faq-q">¿Es legal cambiar la radicación para pagar menos patentes?</div>
-      <div class="faq-a">
-        <p>Sí, es completamente legal. El Decreto 272/2024 establece expresamente la libre elección de Registro Seccional en todo el país. No se requiere ninguna justificación para el cambio. Elegir una jurisdicción con menor carga tributaria es un acto de <strong>planificación fiscal lícita</strong>, no de evasión.</p>
+      <button class="faq-q" aria-expanded="false">1. ¿Es legal cambiar la radicación para pagar menos?</button>
+      <div class="faq-a" role="region">
+        <p>Sí, pero con condiciones. La Resolución M.J. 272/2024 permite inscribir el vehículo en cualquier Registro del país. Sin embargo, <strong>debés tener domicilio real o demostrar guarda habitual del vehículo en la jurisdicción de destino</strong>. No es tan simple como «elegí cualquier provincia». Sin sustancia real, es un artificio que puede ser impugnado.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">¿Puede mi provincia actual impedirme el cambio?</div>
-      <div class="faq-a">
-        <p>No puede impedir el cambio de radicación, que es un trámite federal ante la DNRPA. Sin embargo, sí puede exigir que estés <strong>al día con las patentes</strong> para emitir la baja tributaria. Si tenés deuda, regularizala antes de iniciar el trámite.</p>
+      <button class="faq-q" aria-expanded="false">2. ¿Puede mi provincia impedirlo?</button>
+      <div class="faq-a" role="region">
+        <p>No puede bloquear el cambio registral (es un trámite federal ante la DNRPA). Sin embargo, <strong>sí puede exigir el pago de patentes</strong> si detecta que el vehículo se usa habitualmente en su jurisdicción. AGIP (CABA) aplica el Art. 418 del Código Fiscal porteño, y ARBA (PBA) el Art. 50 del Código Fiscal bonaerense, para reclamar a vehículos que circulan regularmente en su territorio aunque estén radicados en otra provincia.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">¿Qué pasa si la provincia de destino sube las alícuotas después?</div>
-      <div class="faq-a">
-        <p>Las alícuotas pueden cambiar año a año por decisión de cada legislatura provincial. No hay garantía de que una provincia mantenga tasas bajas indefinidamente. Sin embargo, siempre podés volver a cambiar la radicación a otra jurisdicción.</p>
+      <button class="faq-q" aria-expanded="false">3. ¿Hay riesgo de cobro retroactivo?</button>
+      <div class="faq-a" role="region">
+        <p><strong>Sí, es un riesgo real.</strong> AGIP lo persigue activamente. Ejemplo concreto: un porteño que registra en Salta pagando $100.000/bimestre en lugar de $300.000 en CABA — CABA puede reclamar los $200.000 de diferencia por cada período, más intereses resarcitorios. El cambio registral no impide que la jurisdicción de uso efectivo reclame lo suyo.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">¿Necesito ir físicamente a la otra provincia?</div>
-      <div class="faq-a">
-        <p>En principio, el trámite requiere presentación en el Registro Seccional de destino o en el de origen para iniciar la transferencia. Algunos pasos pueden requerir presencia física o, alternativamente, podés otorgar un <strong>poder notarial</strong> a alguien que gestione el trámite en tu nombre. Consultá con un gestor automotor de la jurisdicción de destino.</p>
+      <button class="faq-q" aria-expanded="false">4. ¿Necesito ir físicamente?</button>
+      <div class="faq-a" role="region">
+        <p>El trámite es <strong>semi-presencial</strong>. Algunas gestiones pueden iniciarse online, pero se requiere presentación física para firmas originales, documentación original y verificación de identidad. Podés delegar mediante un gestor con <strong>poder notarial</strong>. La verificación policial (Formulario 12) es presencial para el vehículo.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">¿Afecta a mi seguro o a la VTV?</div>
-      <div class="faq-a">
-        <p>El seguro no depende de la radicación sino del lugar de guarda habitual del vehículo, que debés declarar correctamente a tu compañía. La VTV/RTO depende de la normativa de cada jurisdicción; generalmente podés realizarla donde circulás habitualmente.</p>
+      <button class="faq-q" aria-expanded="false">5. ¿Afecta al seguro?</button>
+      <div class="faq-a" role="region">
+        <p><strong>Debés notificar a tu aseguradora</strong> y declarar la zona real de circulación/guarda del vehículo. Mentir sobre el lugar de guarda habitual puede resultar en <strong>rechazo de cobertura ante un siniestro</strong>. La SSN no ha planteado objeciones al cambio de radicación siempre que la información declarada sea veraz.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">¿Hay riesgo de que una provincia me reclame patentes retroactivamente?</div>
-      <div class="faq-a">
-        <p>Una vez efectuada la baja tributaria y el cambio de radicación, la jurisdicción anterior no puede reclamarte patentes por períodos posteriores al cambio. Los períodos anteriores sí deben estar pagos. El cambio tiene efectos desde su inscripción registral.</p>
+      <button class="faq-q" aria-expanded="false">6. ¿Qué pasa con las multas?</button>
+      <div class="faq-a" role="region">
+        <p>Las multas de tránsito siguen al <strong>lugar donde se cometió la infracción</strong>, no a la jurisdicción de radicación. El Sistema Nacional de Infracciones (SINAI) comparte datos entre provincias. Las multas impagas pueden afectar la renovación de la licencia de conducir.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">¿Cuánto tarda el trámite completo?</div>
-      <div class="faq-a">
-        <p>Depende de la velocidad de cada Registro y de la gestión de la baja tributaria. En condiciones normales, el trámite completo puede llevar entre <strong>2 y 6 semanas</strong>. La baja tributaria suele ser el paso más lento, especialmente en PBA.</p>
+      <button class="faq-q" aria-expanded="false">7. ¿Qué pasa si suben las alícuotas en la provincia de destino?</button>
+      <div class="faq-a" role="region">
+        <p>Podés cambiar nuevamente la radicación. No hay garantía de que las tasas se mantengan bajas: cada legislatura provincial puede modificarlas año a año. Es un riesgo a considerar.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">¿Esto aplica también para motos?</div>
-      <div class="faq-a">
-        <p>Sí. El Decreto 272/2024 y la Circular DN 20/25 aplican a todos los vehículos inscriptos en el régimen de la DNRPA, incluyendo automóviles, motos, camiones y otros automotores.</p>
+      <button class="faq-q" aria-expanded="false">8. ¿Aplica a motos?</button>
+      <div class="faq-a" role="region">
+        <p>Sí. La Resolución 272/2024 aplica a <strong>todos los vehículos inscriptos en el régimen de la DNRPA</strong>, incluyendo automóviles, motos, camiones y otros automotores.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">9. ¿Qué pasa si declaro un domicilio ficticio?</button>
+      <div class="faq-a" role="region">
+        <p><strong>Consecuencias graves.</strong> ARCA verifica direcciones mediante confirmación postal y visitas físicas. Sanciones posibles: multas de $150 a $45.000, bloqueo de CUIT, categorización negativa en el SIPER (Sistema de Perfil de Riesgo), y potencial <strong>procesamiento penal por falsificación de documento público</strong>. No vale la pena el riesgo.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">10. ¿Hay doble imposición con Bienes Personales?</button>
+      <div class="faq-a" role="region">
+        <p>Sí. Los vehículos están gravados simultáneamente por patentes (provinciales) y por el Impuesto a los Bienes Personales (nacional). Las patentes <strong>no pueden deducirse</strong> de la base imponible de Bienes Personales. Es una de las principales críticas al sistema: doble tributación patrimonial sobre el mismo bien.</p>
       </div>
     </div>
   </div>
@@ -705,9 +846,23 @@ footer a { color: var(--accent); text-decoration: none; }
   <div class="container">
     <p style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:8px">⚖️ PatentesJustas.ar</p>
     <p>Información pública con fines educativos. No constituye asesoramiento legal ni tributario.<br>
-    Consultá siempre con un profesional antes de tomar decisiones fiscales.</p>
-    <p style="margin-top:16px">Las alícuotas son aproximadas y pueden variar. Verificá siempre en fuentes oficiales.<br>
-    Hecho con ☕ y convicción de que los impuestos deben ser justos.</p>
+    <strong>Consultá siempre con un profesional</strong> (contador, abogado tributarista) antes de tomar decisiones fiscales.</p>
+    <p style="margin-top:16px;font-size:0.78rem">
+      <strong>Fuentes:</strong>
+      <a href="https://www.lanacion.com.ar/politica/el-gobierno-oficializo-sus-reformas-en-el-registro-automotor-que-cambiara-a-partir-de-ahora-nid02092024/" target="_blank" rel="noopener" style="color:var(--accent)">Res. M.J. 272/2024 (La Nación)</a> ·
+      <a href="https://www.lanacion.com.ar/autos/que-pasa-si-se-inscribe-un-auto-en-otra-provincia-y-por-que-habria-que-pagar-dos-patentes-nid07042025/" target="_blank" rel="noopener" style="color:var(--accent)">Domínguez sobre doble patente (La Nación)</a> ·
+      <a href="https://arodarpost.com.ar/argentina-el-pais-donde-cuando-se-compra-un-auto-se-pagan-dos/" target="_blank" rel="noopener" style="color:var(--accent)">Litvin-Pieruzzini carga fiscal (ArodarPost)</a> ·
+      <a href="https://eleconomista.com.ar/autos/el-sector-automotor-un-monumento-distorsion-totalmente-degenerado-n75743" target="_blank" rel="noopener" style="color:var(--accent)">Pieruzzini «monumento a la distorsión» (El Economista)</a> ·
+      <a href="https://www.cadena3.com/noticia/noticias-rosario/cuestionamiento-a-la-imposicion-de-patentes-en-10-anos-se-paga-medio-auto_435472" target="_blank" rel="noopener" style="color:var(--accent)">Pérez Rocca / Fund. Libertad (Cadena 3)</a> ·
+      <a href="https://www.infobae.com/autos/2025/05/06/cuanto-paga-de-patente-en-cada-provincia-el-auto-mas-vendido-de-la-argentina/" target="_blank" rel="noopener" style="color:var(--accent)">Ranking patentes por provincia (Infobae)</a> ·
+      <a href="https://www.arba.gov.ar/archivos/Publicaciones/leyimpositiva2026.pdf" target="_blank" rel="noopener" style="color:var(--accent)">Ley Impositiva PBA 2026 (ARBA)</a> ·
+      <a href="https://documentosboletinoficial.buenosaires.gob.ar/publico/PL-LEY-LCABA-LCBA-6927-25-ANX.pdf" target="_blank" rel="noopener" style="color:var(--accent)">Ley 6927 CABA (Boletín Oficial)</a> ·
+      Circular DN 20/2024 · Disposición 142/2024 · Circular DN 19/2025 · DNU 70/2023 · Decreto-Ley 6582/58 · Ley 23.548 · Código Fiscal CABA (Art. 416) · Código Fiscal PBA (Art. 50) · Res. Normativa ARBA 26/2024 · Cámara Federal de La Plata (sept. 2025) · CSJN fallos «Rosa Melo de Cané» 115:111, «Candy S.A.» 332:1571 · Fallo Baker Hughes Argentina S.R.L. c/ GCBA (2019) · Tarifarios DNRPA vigentes
+    </p>
+    <p style="margin-top:12px">
+      Última actualización: Enero 2026. Las alícuotas son las vigentes al momento de publicación y pueden variar.<br>
+      Hecho con ☕ y convicción de que los impuestos deben ser justos.
+    </p>
   </div>
 </footer>
 
@@ -734,32 +889,44 @@ document.getElementById('menu-btn').addEventListener('click', () => {
 
 // FAQ
 document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    item.classList.toggle('open');
+    q.setAttribute('aria-expanded', item.classList.contains('open'));
+  });
 });
 
-// Bar chart
+// Bar chart - midpoint effective rates sorted low to high
 const data = [
+  { label: 'San Juan', value: 0.5, color: '#0d9488' },
+  { label: 'Chaco', value: 0.6, color: '#0d9488' },
+  { label: 'Formosa', value: 0.7, color: '#059669' },
+  { label: 'T. del Fuego', value: 1.0, color: '#059669' },
+  { label: 'Catamarca', value: 1.0, color: '#059669' },
+  { label: 'Córdoba', value: 1.5, color: '#65a30d' },
+  { label: 'Sgo. del Estero', value: 1.8, color: '#65a30d' },
+  { label: 'Tucumán', value: 2.0, color: '#ca8a04' },
+  { label: 'Salta/Jujuy/Nqn', value: 2.0, color: '#ca8a04' },
+  { label: 'Santa Fe', value: 2.05, color: '#ca8a04' },
+  { label: 'La Rioja', value: 2.5, color: '#d97706' },
+  { label: 'La Pampa', value: 3.0, color: '#ea580c' },
+  { label: 'Santa Cruz', value: 3.0, color: '#ea580c' },
+  { label: 'R.Negro/S.Luis', value: 3.5, color: '#ea580c' },
   { label: 'PBA', value: 4.5, color: '#dc2626' },
-  { label: 'CABA', value: 3.2, color: '#ea580c' },
-  { label: 'Santa Fe', value: 3.0, color: '#ea580c' },
-  { label: 'Córdoba', value: 2.6, color: '#d97706' },
-  { label: 'Mendoza', value: 2.3, color: '#ca8a04' },
-  { label: 'Tucumán', value: 2.0, color: '#65a30d' },
-  { label: 'La Pampa', value: 1.4, color: '#16a34a' },
-  { label: 'Formosa', value: 1.1, color: '#059669' },
-  { label: 'T. del Fuego', value: 0.6, color: '#0d9488' },
+  { label: 'CABA', value: 8.0, color: '#991b1b' },
 ];
-const max = 5;
+const max = 8.5;
 const chart = document.getElementById('chart');
 data.forEach(d => {
   const row = document.createElement('div');
   row.className = 'bar-row';
+  const displayVal = d.label === 'Santa Fe' ? '~2.05%' : d.value + '%';
   row.innerHTML = `
     <div class="bar-label">${d.label}</div>
     <div class="bar-track">
-      <div class="bar-fill" style="width:0%;background:${d.color}">${d.value}%</div>
+      <div class="bar-fill" style="width:0%;background:${d.color}">${displayVal}</div>
     </div>
-    <div class="bar-value">${d.value}%</div>
+    <div class="bar-value">${displayVal}</div>
   `;
   chart.appendChild(row);
 });
@@ -769,7 +936,7 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       document.querySelectorAll('.bar-fill').forEach((bar, i) => {
-        setTimeout(() => { bar.style.width = (data[i].value / max * 100) + '%'; }, i * 80);
+        setTimeout(() => { bar.style.width = (data[i].value / max * 100) + '%'; }, i * 60);
       });
       observer.disconnect();
     }
